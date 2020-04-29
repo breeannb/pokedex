@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './Header.js';
 
 
 
@@ -25,12 +26,15 @@ export default class App extends Component {
   render() {
       // console.log(this.state.searchQuery); successfully logs out our state changes upon onChange
     return (
-      <div className="App">
-        
-        {/* make a search bar event handler*/}
-        <input onChange={this.handleChange} />
+      <>
+        <Header />
+        <div className="App">
+          
+          {/* make a search bar event handler*/}
+          <input onChange={this.handleChange} />
 
-    </div>
+        </div>
+      </>
     )
   }
 }

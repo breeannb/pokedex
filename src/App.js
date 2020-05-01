@@ -26,9 +26,10 @@ export default class App extends Component {
   // initialize state 
   state = {
     searchNameQuery: '', 
-    searchTypeQuery: '',
+    searchTypeOneQuery: '',
+    searchTypeTwoQuery: '',
     searchAttackQuery: '',
-    data: data, 
+    data: data, //make this an empty array? []
   }
 
   handleNameChange = (event) => {
@@ -39,7 +40,6 @@ export default class App extends Component {
       // console.log('hello world!,', value); successfully logs out
     // set state of query to value
     this.setState({ searchNameQuery: value});
-    this.setState({ searchTypeQuery: value});
     
   }
 
@@ -50,7 +50,6 @@ export default class App extends Component {
   // on change, we can now get the value
     // console.log('hello world!,', value); successfully logs out
   // set state of query to value
-  this.setState({ searchNameQuery: value});
   this.setState({ searchTypeQuery: value});
   
   }
@@ -74,9 +73,17 @@ export default class App extends Component {
     this.setState({ data: fetchData.body.results })
   }
 
-  handleTypeClick = async () => { 
+  handleTypeOneClick = async () => { 
     // console.log('hello world', this.state.searchQuery);
     const fetchData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?type_1=${this.state.searchTypeQuery}`); 
+
+    console.log(fetchData.body.results);
+    this.setState({ data: fetchData.body.results })
+  }
+
+  handleTypeTwoClick = async () => { 
+    // console.log('hello world', this.state.searchQuery);
+    const fetchData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?type_2=${this.state.searchTypeQuery}`); 
 
     console.log(fetchData.body.results);
     this.setState({ data: fetchData.body.results })
@@ -109,9 +116,14 @@ export default class App extends Component {
           {/* search bar by types: there can be 2 */}
           {/* make a search bar event handler*/}
           <input onChange={this.handleTypeChange} />
-          <button onClick={this.handleTypeClick}>Type Search</button>
+          <button onClick={this.handleTypeOneClick}>Type Search</button>
 
           {/* search bar by types: there can be 2 */}
+          {/* make a search bar event handler*/}
+          <input onChange={this.handleTypeChange} />
+          <button onClick={this.handleTypeTwoClick}>Type 2 Search</button>
+
+          {/* search by attack */}
           {/* make a search bar event handler*/}
           <input onChange={this.handleAttackChange} type="number" min="1" max="100"/>
           <button onClick={this.handleAttackClick}>Attack Search</button>

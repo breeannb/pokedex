@@ -2,23 +2,78 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header.js';
 import request from 'superagent';
+import PokeTypes from './PokeTypes';
+import PokeCard from './PokeCard';
 
+// const data = [
+//   {
+//     character: 'some character 1', 
+//     quote: 'some quote 1',
+//     img: 'some img 1'
+//   }, 
+//   {
+//     character: 'some character 2', 
+//     quote: 'some quote 2',
+//     img: 'some img 2'
+//   }, 
+//   {
+//     character: 'some character 3', 
+//     quote: 'some quote 3',
+//     img: 'some img 3'
+//   }
+// ]
 const data = [
   {
-    character: 'some character 1', 
-    quote: 'some quote 1',
-    img: 'some img 1'
-  }, 
-  {
-    character: 'some character 2', 
-    quote: 'some quote 2',
-    img: 'some img 2'
-  }, 
-  {
-    character: 'some character 3', 
-    quote: 'some quote 3',
-    img: 'some img 3'
-  }
+      "_id": "5cef3501ef6005a77cd4fd16",
+      "pokemon": "venusaur",
+      "id": 3,
+      "species_id": 3,
+      "type_1": "grass",
+      "type_2": "poison",
+      "attack": 82,
+      "defense": 83,
+      "color_1": "#78C850",
+      "color_2": "#A040A0",
+      "color_f": "#81A763",
+      "egg_group_1": "monster",
+      "egg_group_2": "plant",
+      "url_image": "http://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png",
+      "pokedex": "http://www.pokemon.com/us/pokedex/venusaur"
+    },
+    {
+      "_id": "5cef3501ef6005a77cd4fd17",
+      "pokemon": "bulbasaur",
+      "id": 1,
+      "species_id": 1,
+      "type_1": "grass",
+      "type_2": "poison",
+      "attack": 49,
+      "defense": 49,
+      "color_1": "#78C850",
+      "color_2": "#A040A0",
+      "color_f": "#81A763",
+      "egg_group_1": "monster",
+      "egg_group_2": "plant",
+      "url_image": "http://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
+      "pokedex": "http://www.pokemon.com/us/pokedex/bulbasaur"
+    },
+    {
+      "_id": "5cef3501ef6005a77cd4fd18",
+      "pokemon": "venusaur-mega",
+      "id": 4,
+      "species_id": 3,
+      "type_1": "grass",
+      "type_2": "poison",
+      "attack": 100,
+      "defense": 123,
+      "color_1": "#78C850",
+      "color_2": "#A040A0",
+      "color_f": "#81A763",
+      "egg_group_1": "monster",
+      "egg_group_2": "plant",
+      "url_image": "http://assets.pokemon.com/assets/cms2/img/pokedex/full/003_f2.png",
+      "pokedex": "http://www.pokemon.com/us/pokedex/venusaur"
+    }
 ]
 
 export default class App extends Component {
@@ -105,6 +160,7 @@ export default class App extends Component {
       // console.log(this.state)
     return (
       <>
+
         <Header />
         <div className="App">
           
@@ -116,7 +172,7 @@ export default class App extends Component {
           {/* search bar by types: there can be 2 */}
           {/* make a search bar event handler*/}
           <input onChange={this.handleTypeChange} />
-          <button onClick={this.handleTypeOneClick}>Type Search</button>
+          <button onClick={this.handleTypeOneClick}>Type 1 Search</button>
 
           {/* search bar by types: there can be 2 */}
           {/* make a search bar event handler*/}
@@ -125,17 +181,27 @@ export default class App extends Component {
 
           {/* search by attack */}
           {/* make a search bar event handler*/}
-          <input onChange={this.handleAttackChange} type="number" min="1" max="100"/>
+          <input onChange={this.handleAttackChange} type="number" min="1" max="190"/>
           <button onClick={this.handleAttackClick}>Attack Search</button>
 
 
           {/* Map over the data */}
           {
-            this.state.data.map(quote => {
-              return <h1>{quote.pokemon}</h1>
+            this.state.data.map(pokemonobj => {
+            return <>
+            <h1>{pokemonobj.pokemon}</h1> 
+            <img src="" alt=""/>
+            <p>{pokemonobj.type_1}</p>
+            <p>{pokemonobj.type_2}</p>
+            <p>{pokemonobj.attack}</p>
+            </>
             })
           }
         </div>
+        
+        {/* <PokeTypes /> */}
+        
+        {/* <PokeCard data={this.state.data}  /> */}
       </>
     )
   }

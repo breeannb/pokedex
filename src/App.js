@@ -5,23 +5,6 @@ import request from 'superagent';
 import PokeTypes from './PokeTypes';
 import PokeCard from './PokeCard';
 
-// const data = [
-//   {
-//     character: 'some character 1', 
-//     quote: 'some quote 1',
-//     img: 'some img 1'
-//   }, 
-//   {
-//     character: 'some character 2', 
-//     quote: 'some quote 2',
-//     img: 'some img 2'
-//   }, 
-//   {
-//     character: 'some character 3', 
-//     quote: 'some quote 3',
-//     img: 'some img 3'
-//   }
-// ]
 const data = [
   {
       "_id": "5cef3501ef6005a77cd4fd16",
@@ -84,7 +67,7 @@ export default class App extends Component {
     searchTypeOneQuery: '',
     searchTypeTwoQuery: '',
     searchAttackQuery: '',
-    data: data, //make this an empty array? []
+    data: data, 
   }
 
   handleNameChange = (event) => {
@@ -190,7 +173,7 @@ export default class App extends Component {
             this.state.data.map(pokemonobj => {
             return <>
             <h1>{pokemonobj.pokemon}</h1> 
-            <img src="" alt=""/>
+            <img src={pokemonobj.url_image} alt=""/>
             <p>{pokemonobj.type_1}</p>
             <p>{pokemonobj.type_2}</p>
             <p>{pokemonobj.attack}</p>

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
-export default class PokeTypes extends Component {
+export default class TypeSelection extends Component {
     render() {
         return (
             <>
-            <label> Dropdown Filter By Type:</label>
-            <div>
-                <select> 
+                <section className="image-list"> 
+                <select onChange={this.props.myTypeCallBackHandleChange}> 
                     <option value="alltypes">All Types</option>
                     <option value="bug">Bug</option>
                     <option value="normal">Normal</option>
@@ -27,7 +26,8 @@ export default class PokeTypes extends Component {
                     <option value="steel">Steel</option>
                     <option value="fairy">Fairy</option>
                 </select> 
-            </div>
+
+                </section>
             </>
         )
     }

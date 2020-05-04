@@ -4,18 +4,12 @@ import Header from './Header.js';
 import data from './data.js';
 import ListPage from './ListPage.js'
 import request from 'superagent';
-import PokeTypes from './PokeTypes';
-import PokeCard from './PokeCard';
 
 
 export default class App extends Component {
   
   // initialize state 
   state = {
-    searchNameQuery: '', 
-    searchTypeOneQuery: '',
-    searchTypeTwoQuery: '',
-    searchAttackQuery: '',
     data: data.results
   }
 
@@ -26,15 +20,10 @@ export default class App extends Component {
       // console.log(this.state)
     return (
       <>
-        <div>
+        <div className="whole-page">
           <Header />
           <ListPage />
-  
-        
-        
-        {/* <PokeTypes /> */}
-        
-        {/* <PokeCard data={this.state.data} Hello /> */}
+
 
         </div>
       </>

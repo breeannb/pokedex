@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
+import DetailPokeCard from './DetailPokeCard'
 
 export default class DetailPage extends Component {
     
@@ -9,16 +10,16 @@ export default class DetailPage extends Component {
     
     async componentDidMount() {
         const fetchedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.props.match.params.id}`); 
-        console.log('hello', fetchedData);
-        this.setState({pokemoncharacter: fetchedData.body.results})
+        this.setState({pokemoncharacter: fetchedData.body.results[0]})
     }
 
 
     render() {
         return (
-            <div>
-                Hello
-            </div>
+            <ul>
+                <DetailPokeCard object={this.state.pokemoncharacter} />
+                
+            </ul>
         )
     }
 }

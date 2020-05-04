@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent';
 import SearchSection from './SearchSection.js';
 
-export default class ListPage extends Component {
+export default class HomePage extends Component {
 
     state = {
         pokemoncharacters: [],

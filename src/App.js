@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 // import Header from './Header.js';
-import ListPage from './ListPage.js'
+import HomePage from './HomePage.js'
 import DetailPage from './DetailPage'
 import {
     BrowserRouter as Router, 
@@ -20,7 +20,7 @@ import {
                         <Route 
                             path="/home" 
                             exact
-                            render={(routerProps) => <ListPage {...routerProps} />} 
+                            render={(routerProps) => <HomePage {...routerProps} />} 
                         />
                         <Route 
                             path="/pokemon/:id" 

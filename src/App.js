@@ -22,12 +22,12 @@ import {
                 <Router>
                     <Switch>
                         <Route 
-                            path="/home" 
+                            path="/pokedex" 
                             exact
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
                         <Route 
-                            path="/pokemon/:id" 
+                            path="pokedex/pokemon/:id" 
                             exact
                             render={(routerProps) => <DetailPage {...routerProps} />} 
                         />

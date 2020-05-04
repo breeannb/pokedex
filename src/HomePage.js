@@ -9,6 +9,7 @@ export default class HomePage extends Component {
         searchQuery: '',
         searchTypeQuery: '', 
         searchAttackQuery: '',
+        page: 1,
     }
 
     // Search Name Bar 
@@ -21,7 +22,9 @@ export default class HomePage extends Component {
 
     handleClick = async () => {
         const { body: { 
-                results }
+                results,
+                perPage,
+                page }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);
@@ -58,14 +61,47 @@ export default class HomePage extends Component {
         console.log(results);
         this.setState({pokemoncharacters: results})
     }
+
+    //Next Button
+    nextHandleClick = async () => {
+        const { body: { 
+                results,
+                perPage,
+                page }
+        } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
+        
+        console.log(results);
+        this.setState({pokemoncharacters: results})
+    }
+
+    //Prev Button
+    prevHandleClick = async () => {
+        const { body: { 
+                results,
+                perPage,
+                page }
+        } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
+        
+        console.log(results);
+        this.setState({pokemoncharacters: results})
+    }
+
+    // routeToNextPage = async () => {
+        
+    //     const nextPageNumber = this.state.page + 1;
+    //     this.setState({page: nextPageNumber}) = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
+    // }
+
     
 
     render() {
         // console.log(this.state.searchNameInquiry) tracking state of user input
         return (
             <div className="list-page">
+                <button onClick={this.nextHandleClick}>Next</button>
+                <button onClick={this.prevHandleClick}>Prev</button>
                 <SearchSection className="searchbar" />
-
+                
             </div>
         )
     }

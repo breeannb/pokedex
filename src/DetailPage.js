@@ -18,7 +18,6 @@ export default class DetailPage extends Component {
         return (
             <ul>
                 <PokeCard object={this.state.pokemoncharacter} />
-                
             </ul>
         )
     }

@@ -3,7 +3,6 @@ import './App.css';
 import Header from './Header.js';
 import data from './data.js';
 import ListPage from './ListPage.js'
-import request from 'superagent';
 
 
 export default class App extends Component {

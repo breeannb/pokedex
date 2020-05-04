@@ -3,6 +3,8 @@ import './App.css';
 // import Header from './Header.js';
 import HomePage from './HomePage.js'
 import DetailPage from './DetailPage'
+import Header from './Header'
+import Footer from './Footer'
 import {
     BrowserRouter as Router, 
     Route, 
@@ -14,6 +16,8 @@ import {
   export default class App extends Component {
     render() {
         return (
+            <>
+            <div><Header /></div>
             <div>
                 <Router>
                     <Switch>
@@ -30,6 +34,8 @@ import {
                     </Switch>
                 </Router>
             </div>
+            <div><Footer/></div>
+            </>
         )
     }
 }

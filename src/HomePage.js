@@ -80,6 +80,7 @@ export default class HomePage extends Component {
                 results,
                 // perPage,
                 // page }
+        }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);

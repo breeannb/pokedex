@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
-import DetailPokeCard from './DetailPokeCard'
+import PokeCard from './PokeCard'
 
 export default class DetailPage extends Component {
     
@@ -17,7 +17,7 @@ export default class DetailPage extends Component {
     render() {
         return (
             <ul>
-                <DetailPokeCard object={this.state.pokemoncharacter} />
+                <PokeCard object={this.state.pokemoncharacter} />
                 
             </ul>
         )

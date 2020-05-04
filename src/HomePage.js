@@ -23,8 +23,8 @@ export default class HomePage extends Component {
     handleClick = async () => {
         const { body: { 
                 results,
-                perPage,
-                page }
+                // perPage,
+                // page }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);
@@ -66,8 +66,8 @@ export default class HomePage extends Component {
     nextHandleClick = async () => {
         const { body: { 
                 results,
-                perPage,
-                page }
+                // perPage,
+                // page }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);
@@ -78,8 +78,8 @@ export default class HomePage extends Component {
     prevHandleClick = async () => {
         const { body: { 
                 results,
-                perPage,
-                page }
+                // perPage,
+                // page }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);

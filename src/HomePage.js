@@ -24,7 +24,8 @@ export default class HomePage extends Component {
         const { body: { 
                 results,
                 // perPage,
-                // page }
+                // page } 
+        }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);
@@ -68,6 +69,8 @@ export default class HomePage extends Component {
                 results,
                 // perPage,
                 // page }
+
+        }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`); 
         
         console.log(results);

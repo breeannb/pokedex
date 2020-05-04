@@ -7,7 +7,7 @@ export default class PokeCard extends Component {
             <>
             
                 <li className="poke-card">
-                    <Link to={`/pokemon/${this.props.object.pokemon}`}> 
+                    <Link to={`pokedex/pokemon/${this.props.object.pokemon}`}> 
                         <img src={this.props.object.url_image} alt={this.props.object.pokemon} />
                     </Link>
                     <h2>{this.props.object.pokemon}</h2>

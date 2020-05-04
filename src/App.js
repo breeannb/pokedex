@@ -27,7 +27,7 @@ import {
                             render={(routerProps) => <HomePage {...routerProps} />} 
                         />
                         <Route 
-                            path="pokedex/pokemon/:id" 
+                            path="/pokedex/pokemon/:id" 
                             exact
                             render={(routerProps) => <DetailPage {...routerProps} />} 
                         />

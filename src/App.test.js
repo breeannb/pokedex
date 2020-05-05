@@ -21,5 +21,5 @@ expect(footer.find('p').length).toBe(1);
 test('render a pokecard', () => {
   const pokecard = shallow(<SearchSection />)
 //  expect(header).toMatchSnapshot();
-expect(pokecard.find('button').length).toBe(5);
+expect(pokecard.find('button').length).toBe(7);
 });

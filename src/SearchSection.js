@@ -12,7 +12,9 @@ export default class SearchSection extends Component {
         searchTypeQuery: '', 
         searchAttackQuery: '',
         searchDefenseQuery: '',
-        searchHpQuery: ''
+        searchHpQuery: '',
+        pageInfo: {},
+        page: 1,
     }
 
     // Search Name Bar 
@@ -59,7 +61,6 @@ export default class SearchSection extends Component {
                 results }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?attack=${this.state.searchAttackQuery}`); 
         
-        console.log(results);
         this.setState({pokemoncharacters: results})
     }
 
@@ -76,7 +77,7 @@ export default class SearchSection extends Component {
                 results }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?defense=${this.state.searchDefenseQuery}`); 
         
-        console.log(results);
+        // console.log(results);
         this.setState({pokemoncharacters: results})
     }
 
@@ -93,8 +94,48 @@ export default class SearchSection extends Component {
                 results }
         } = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?hp=${this.state.searchHpQuery}`); 
         
-        console.log(results);
+        // console.log(results);
         this.setState({pokemoncharacters: results})
+    }
+
+    //Next Button
+    nextHandleClick = async () => {
+        const nextPageNumber = this.state.page + 1; 
+        const response  = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&page=${nextPageNumber}&perPage=50`); 
+        // console.log(response);
+        // &attack=${this.state.searchAttackQuery}&defense=${this.state.searchDefenseQuery}&hp=${this.state.searchHpQuery}
+        this.setState({ page: nextPageNumber})
+
+        const result = response.body.results;
+        const info = response.body;
+
+        if (this.state.page === (Math.ceil(info.count / info.perPage))) {
+            this.setState({ hideNext: true})
+        } else {
+            this.setState( {hideNext: false })
+        }
+        this.setState({pokemoncharacters: result, pageInfo: info })
+        // console.log('hello', this.state);
+    }
+
+    //Prev Button
+    prevHandleClick = async () => {
+        const prevPageNumber = this.state.page - 1; 
+        const response  = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&page=${prevPageNumber}&perPage=50`); 
+        // console.log(response);
+        // &attack=${this.state.searchAttackQuery}&defense=${this.state.searchDefenseQuery}&hp=${this.state.searchHpQuery}
+        this.setState({ page: prevPageNumber})
+
+        const result = response.body.results;
+        const info = response.body;
+
+        if (this.state.page > 1) {
+            this.setState({ hidePrev: true})
+        } else {
+            this.setState({hidePrev: false })
+        }
+        this.setState({pokemoncharacters: result, pageInfo: info })
+        // console.log('hello', this.state);
     }
 
     render() {
@@ -122,6 +163,11 @@ export default class SearchSection extends Component {
                 <div className="attack-selection">
                 <input onChange={this.handleHpChange} type="number" min="1" max="190"/><button onClick={this.handleHpClick}>HP Search</button>  
                 </div>
+
+                {!this.state.hidePrev &&  <button onClick={this.prevHandleClick} >Prev Page</button>}
+                {!this.state.hideNext &&  <button onClick={this.nextHandleClick} >Next Page</button>}
+                
+
 
                 <ul className="gallery-window">
                 {

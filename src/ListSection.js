@@ -5,7 +5,7 @@ import SearchBar from './SearchBar.js';
 import request from 'superagent';
 
 
-export default class SearchSection extends Component {
+export default class ListSection extends Component {
     
     state = {
         pokemoncharacters: [],

@@ -24,3 +24,4 @@ export default class PokeCard extends Component {
         )
     }
 }
+

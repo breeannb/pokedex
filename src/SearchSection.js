@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TypeSelection from './TypeSelection.js';
 import PokeCard from './PokeCard.js';
+import SearchBar from './SearchBar.js';
 import request from 'superagent';
 
 
@@ -142,9 +143,10 @@ export default class SearchSection extends Component {
         return (
         
             <div>
-                <div className="name-search-bar">
-                <input  onChange={this.handleChange}/>
-                <button onClick={this.handleClick}>Search</button>
+                
+                <div> 
+                    <SearchBar searchhandle={this.handleChange}/>
+                    <button onClick={this.handleClick}>Search</button>
                 </div>
 
                 <div className="type-selection">
@@ -174,6 +176,7 @@ export default class SearchSection extends Component {
                     this.state.pokemoncharacters.map((pokemonmonster) => {
                         return <div>
                                 <PokeCard object={pokemonmonster}/>
+                                
                         </div>
 
                     })
